@@ -1,16 +1,18 @@
 ﻿@model HomeWork.Models.Student
 
-
 <!DOCTYPE html>
 
+<html>
 
 <body>
+
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <hr />
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.學號, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -46,40 +48,77 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="新增" class="btn btn-default" />
                 </div>
             </div>
         </div>
     }
 
-</body>
-
-<table class="table" border=1>
-    <thead>
-        <tr>
-            <th>學號</th>
-            <th>姓名</th>
-            <th>生日</th>
-            <th>Email</th>
-            <th></th>
-        </tr>
-    </thead>
-
-
-    <tbody>
-
-        @foreach (var student in ViewData["Students"] as IEnumerable<HomeWork.Models.Student>)
-        {
+    <table class="table" border=1>
+        <thead>
             <tr>
-                <th>@student.學號</th>
-                <th>@student.姓名</th>
-                <th>@student.生日</th>
-                <th>@student.Email</th>
-                <th>
+                <th>學號</th>
+                <th>姓名</th>
+                <th>生日</th>
+                <th>Email</th>
+                <th></th>
             </tr>
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var student in ViewData["Students"] as IEnumerable<HomeWork.Models.Student>)
+            {
+                <tr>
+                    <th>@student.學號</th>
+                    <th>@student.姓名</th>
+                    <th class="birthday">@student.生日</th>
+                    <th>@student.Email</th>
+                    <th>
+                        @using (Html.BeginForm("Delete", "test", new { id = student.學號 }, FormMethod.Post, new { @class = "Delete" }))
+                        {
+                            @Html.Hidden("學號", student.學號)
+                            <input type="submit" value="刪除" class="btn btn-default">
+                        }
+                        <a class="btn btn-default" href='@Url.Action("Edit", "test", new { id = student.學號 })'> 編輯</a>
+                    </th>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+    <script>
+
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [year, month, day].join('-');
         }
 
-    </tbody>
-</table>
+        let birthdayValue = document.querySelector('.birthday').innerHTML;
+        console.log(birthdayValue);
+        console.log(typeof (birthdayValue));
+
+        document.querySelector('.birthday').textContent = formatDate(birthdayValue)
+
+
+    </script>
+
+</body>
+
+
+</html>
+
 
 

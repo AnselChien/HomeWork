@@ -129,7 +129,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -154,10 +153,8 @@
     <Compile Include="Models\Student.cs">
       <DependentUpon>HomeworkModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Student\test222Controller.cs" />
-    <Compile Include="Views\Student\testController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -211,15 +208,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\test\Delete.cshtml" />
-    <Content Include="Views\test\Details.cshtml" />
-    <Content Include="Views\test\Edit.cshtml" />
-    <Content Include="Views\test\Index.cshtml" />
-    <Content Include="Views\test222\Create.cshtml" />
-    <Content Include="Views\test222\Delete.cshtml" />
-    <Content Include="Views\test222\Details.cshtml" />
-    <Content Include="Views\test222\Edit.cshtml" />
-    <Content Include="Views\test222\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
