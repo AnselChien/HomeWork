@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HomeworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HomeworkModelStoreContainer">
+    <EntitySet Name="Students" EntityType="HomeworkModel.Store.Students" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Classes" EntityType="HomeworkModel.Store.Classes" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="學號" />
+    </Key>
+    <Property Name="學號" Type="nvarchar" Nullable="false" MaxLength="5" />
+    <Property Name="姓名" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="生日" Type="datetime" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="課號" />
+    </Key>
+    <Property Name="課號" Type="nvarchar" Nullable="false" MaxLength="4" />
+    <Property Name="課名" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="學分數" Type="int" Nullable="false" />
+    <Property Name="上課地點" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="講師名字" Type="nvarchar" Nullable="false" MaxLength="20" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HomeworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HomeworkEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Students" EntityType="HomeworkModel.Student" />
+          <EntitySet Name="Classes" EntityType="HomeworkModel.Class" />
+        </EntityContainer>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="學號" />
+          </Key>
+          <Property Name="學號" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="5" />
+          <Property Name="姓名" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="生日" Type="DateTime" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="課號" />
+          </Key>
+          <Property Name="課號" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="4" />
+          <Property Name="課名" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="學分數" Type="Int32" Nullable="false" />
+          <Property Name="上課地點" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="講師名字" Type="String" Nullable="false" MaxLength="20" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HomeworkModelStoreContainer" CdmEntityContainer="HomeworkEntities">
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="IsTypeOf(HomeworkModel.Student)">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="學號" ColumnName="學號" />
+          <ScalarProperty Name="姓名" ColumnName="姓名" />
+          <ScalarProperty Name="生日" ColumnName="生日" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="IsTypeOf(HomeworkModel.Class)">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="課號" ColumnName="課號" />
+          <ScalarProperty Name="課名" ColumnName="課名" />
+          <ScalarProperty Name="學分數" ColumnName="學分數" />
+          <ScalarProperty Name="上課地點" ColumnName="上課地點" />
+          <ScalarProperty Name="講師名字" ColumnName="講師名字" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

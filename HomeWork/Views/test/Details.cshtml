@@ -1,0 +1,50 @@
+﻿@model HomeWork.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Student</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.姓名)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.姓名)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.生日)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.生日)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.學號 }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
