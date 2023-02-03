@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChooseController.cs" />
     <Compile Include="Controllers\ClassController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,6 +213,7 @@
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Class\Edit.cshtml" />
     <Content Include="Views\Class\Index.cshtml" />
+    <Content Include="Views\Choose\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

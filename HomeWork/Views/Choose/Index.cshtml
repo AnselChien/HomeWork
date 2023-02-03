@@ -1,0 +1,27 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        學生 @Html.DropDownList("學生")
+    </div>
+
+    <br />
+
+    @foreach (var _class in ViewData["Classes"] as IEnumerable<HomeWork.Models.Class>)
+    {
+        <div>
+            @_class.課名<input type="checkbox" value=@_class.課號>
+        </div>
+    }
+
+</body>
+
+
+
+</html>

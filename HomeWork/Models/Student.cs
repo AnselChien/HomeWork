@@ -16,7 +16,7 @@ namespace HomeWork.Models
     {
         public string 學號 { get; set; }
         public string 姓名 { get; set; }
-        public DateTime 生日 { get; set; }
+        public System.DateTime 生日 { get; set; }
         public string Email { get; set; }
     }
 }

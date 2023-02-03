@@ -4,31 +4,37 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="HomeworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="HomeworkModelStoreContainer">
-    <EntitySet Name="Students" EntityType="HomeworkModel.Store.Students" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Classes" EntityType="HomeworkModel.Store.Classes" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-  <EntityType Name="Students">
-    <Key>
-      <PropertyRef Name="學號" />
-    </Key>
-    <Property Name="學號" Type="nvarchar" Nullable="false" MaxLength="5" />
-    <Property Name="姓名" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="生日" Type="datetime" Nullable="false" />
-    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="Classes">
-    <Key>
-      <PropertyRef Name="課號" />
-    </Key>
-    <Property Name="課號" Type="nvarchar" Nullable="false" MaxLength="4" />
-    <Property Name="課名" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="學分數" Type="int" Nullable="false" />
-    <Property Name="上課地點" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="講師名字" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="HomeworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Homework.dbo.Choose' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Choose">
+          <Property Name="學號" Type="nvarchar" MaxLength="50" />
+          <Property Name="課程" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="課號" />
+          </Key>
+          <Property Name="課號" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="課名" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="學分數" Type="int" Nullable="false" />
+          <Property Name="上課地點" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="講師名字" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="學號" />
+          </Key>
+          <Property Name="學號" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="姓名" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="生日" Type="date" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HomeworkModelStoreContainer">
+          <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HomeworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -40,20 +46,20 @@
           <Key>
             <PropertyRef Name="學號" />
           </Key>
-          <Property Name="學號" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="5" />
-          <Property Name="姓名" Type="String" Nullable="false" MaxLength="20" />
-          <Property Name="生日" Type="DateTime" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="學號" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="姓名" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="生日" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="課號" />
           </Key>
-          <Property Name="課號" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="4" />
-          <Property Name="課名" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="課號" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="課名" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="學分數" Type="Int32" Nullable="false" />
-          <Property Name="上課地點" Type="String" Nullable="false" MaxLength="20" />
-          <Property Name="講師名字" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="上課地點" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="講師名字" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

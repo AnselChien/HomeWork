@@ -46,8 +46,6 @@ namespace HomeWork.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index([Bind(Include = "學號,姓名,生日,Email")] Student student)
         {
-
-
             if (ModelState.IsValid)
             {
                 db.Students.Add(student);
