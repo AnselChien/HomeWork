@@ -87,7 +87,7 @@
                     <th>
                         @using (Html.BeginForm("Delete", "Class", new { id = _class.課號 }, FormMethod.Post, new { @class = "Delete" }))
                         {
-                            @Html.Hidden("學號", _class.課號)
+                            @Html.Hidden("課號", _class.課號)
                             <input type="submit" value="刪除" class="btn btn-default">
                         }
                         <a class="btn btn-default" href='@Url.Action("Edit", "Class", new { id = _class.課號 })'>編輯</a>

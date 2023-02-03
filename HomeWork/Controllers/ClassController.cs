@@ -67,6 +67,8 @@ namespace HomeWork.Controllers
             {
                 return HttpNotFound();
             }
+            ViewData["Classes"] = db.Classes.ToList();
+
             return View(@class);
         }
 
@@ -103,7 +105,7 @@ namespace HomeWork.Controllers
 
         // POST: Class/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             Class @class = db.Classes.Find(id);
